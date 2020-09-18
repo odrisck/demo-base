@@ -139,21 +139,21 @@ src="https://identity.netlify.com/v1/netlify-identity-widget.js"
         method: 'POST',
         body: JSON.stringify({ type }),
       })
-      .then((res) => res.json())
-      .then((data) => {
-        const template = document.querySelector('#content');
-        const container = document.querySelector(`.${type}`);
+        .then((res) => res.json())
+        .then((data) => {
+          const template = document.querySelector('#content');
+          const container = document.querySelector(`.${type}`);
 
-        //remove any existing content from the containers
-        const oldContent = container.querySelector('.content-display');
-        if (oldContent) {
-          container.removeChild(oldContent);
-        }
+           // remove any existing content from the content containers
+           const oldContent = container.querySelector('.content-display');
+           if (oldContent) {
+             container.removeChild(oldContent);
+           }
 
         const content = template.content.cloneNode(true);
 
         const img = content.querySelector('img');
-        img.src = dtat.src;
+        img.src = data.src;
         img.alt = data.alt;
 
         const credit = content.querySelector('.credit');
